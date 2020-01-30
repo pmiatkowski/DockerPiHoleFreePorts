@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  pihole:
+    container_name: pihole
+    # image: pihole/pihole:4.0.0-1
+    image: pihole/pihole:latest
+    hostname: pihole
+    domainname: home
+    # can be anything
+    mac_address: d0:c1:a1:c1:e1:11
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 443/tcp
+      - 53/tcp
+      - 53/udp
+      - 67/udp
+      - 80/tcp
+    environment:
+    # Physical device IP - change this to your Pi's IP
+      ServerIP: 192.168.1.YYY
+      WEBPASSWORD: ""
+      VIRTUAL_HOST: pihole.home
+      DNS1: 8.8.8.8
+      DNS2: 8.8.4.4
+    volumes:
+      - ./volume:/etc/pihole:rw
+      - ./config/hosts:/etc/hosts:ro
+      - ./config/resolv.conf:/etc/resolv.conf:ro
+      - ./config/dnsmasq.conf:/etc/dnsmasq.d/02-network.conf:ro
+    restart: always
