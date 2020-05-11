@@ -29,4 +29,5 @@ services:
       - ./config/hosts:/etc/hosts:ro
       - ./config/resolv.conf:/etc/resolv.conf:ro
       - ./config/dnsmasq.conf:/etc/dnsmasq.d/02-network.conf:ro
+      - ./config/04-bypass.conf:/etc/dnsmasq.d/04-bypass.conf:ro
     restart: always

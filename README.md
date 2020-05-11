@@ -38,3 +38,12 @@ Update - same IP as in step 2. and 3.
 ```
 192.168.1.YYY pihole
 ```
+
+# Exculding certain devices by MAC address
+https://discourse.pi-hole.net/t/exclude-certain-lan-addresses-from-filtering/2014/5
+
+File is already included - just edit *dns/config/04-bypass.conf* file
+
+# Predefined blocklist
+
+edit *dns/volume/adlists.list* file
